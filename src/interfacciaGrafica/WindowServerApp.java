@@ -31,7 +31,7 @@ public class WindowServerApp extends JFrame implements NotificaInterfaccia{
 		setTitle("Server MyControl");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Desktop\\workspace\\ServerApp\\logo.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\fabio\\Documents\\GitHub\\ServerAppMyControl\\logo.png"));
 	}
 
 	private JPanel creaPanel(){
