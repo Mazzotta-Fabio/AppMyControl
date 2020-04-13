@@ -36,6 +36,7 @@ public class Controller implements Runnable{
 			view.aggiornaWindow("Connesso con " + nome);
 			print.println(Launcher.getLocalName());
 			while(!((cmd=bufferRead.readLine()).equals("0"))){
+				log.info(cmd);
 				model.settaValori(cmd);
 				view.aggiornaInterfaccia();
 			}

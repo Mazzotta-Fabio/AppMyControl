@@ -3,11 +3,12 @@ package patternFactory;
 import java.awt.*;
 import java.awt.event.*;
 
+
 public class AttivitaMouse implements Attività {
 	
 	private Robot robot;
-	private int x;
-	private int y;
+	private double x;
+	private double y;
 	private String azione;
 	private String tastoSelezionato;
 	
@@ -22,7 +23,7 @@ public class AttivitaMouse implements Attività {
 		this.tastoSelezionato=tastoSelezionato;
 	}
 	
-	public AttivitaMouse(int x,int y,String azione){
+	public AttivitaMouse(double x,double y,String azione){
 		try{
 			robot=new Robot();
 		}
@@ -91,12 +92,16 @@ public class AttivitaMouse implements Attività {
 	private void muoviCursore() {
 		//get the current position of the mouse cursor
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = (int) screen.getWidth();
-		int height = (int) screen.getHeight();
-		width = (int) (width/2.54);
-		height = (int) (height/2.54);
+	    double width = screen.getWidth();
+		double height = screen.getHeight();
 		//move the mouse relative to the current position
-		robot.mouseMove(x+300,y+10);
+		//x=x/width;
+		//y=y/height;
+		x = x*1000;
+		y = y*1000;
+		int newX = (int)x;
+		int newY = (int)(y);
+		robot.mouseMove(newX+30,newY);
 	}
 
 	private void premiTastoClick() {

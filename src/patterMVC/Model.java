@@ -2,8 +2,8 @@ package patterMVC;
 
 public class Model implements OttieniDatiModel{
 	
-	private int x;
-	private int y;
+	private double x;
+	private double y;
 	private String opMDP;
 	private String azione;
 	private char carattere;
@@ -25,10 +25,8 @@ public class Model implements OttieniDatiModel{
 			opzioneSelezione=parole[2];
 			break;
 		case "mouseMuovi":
-			double x=Double.parseDouble(parole[1]);
-			double y=Double.parseDouble(parole[2]);
-			this.x=(int)(x*1);
-			this.y=(int)(y*1);
+			x=Double.parseDouble(parole[1]);
+			y=Double.parseDouble(parole[2]);
 			azione=parole[3];
 			break;
 		case "tastiera":
@@ -48,11 +46,11 @@ public class Model implements OttieniDatiModel{
 		return funzionalità;
 	}
 	
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 

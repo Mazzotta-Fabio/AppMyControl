@@ -46,7 +46,7 @@ public class WindowServerApp extends JFrame implements NotificaInterfaccia{
 	private JPanel creaPanel2(){
 		JPanel panel=new JPanel();
 		Font f=new Font("Calibri",Font.BOLD,20);
-		lblIndirizzo=new JLabel("Inserisci il seguente indirizzo [" + Launcher.getLocalName() + "] per connetterti al Server.");
+		lblIndirizzo=new JLabel("Inserisci l'indirizzo IP [" + Launcher.getLocalName() + "] in \"Impostazioni\" per connetterti al PC.");
 		lblIndirizzo.setFont(f);
 		lblIndirizzo.setForeground(Color.RED);
 		panel.add(lblIndirizzo);
