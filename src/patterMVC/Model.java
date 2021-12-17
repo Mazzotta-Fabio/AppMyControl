@@ -52,8 +52,8 @@ public class Model implements OttieniDatiModel{
 			opSistema=parole[1];
 			break;
 		case "invioFile":
-			nomeFile=parole[1];
-			dimensioneFile=Integer.parseInt(parole[2]);
+			//nomeFile=parole[1];
+			//dimensioneFile=Integer.parseInt(parole[2]);
 		}
 	}
 	

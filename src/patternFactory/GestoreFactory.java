@@ -34,7 +34,7 @@ public class GestoreFactory {
 				break;
 			case "invioFile":
 				try {
-					att=new AttivitaFile(model.getSocket(),model.getNomeFile(),Launcher.getPathFile());
+					att=new AttivitaFile(model.getSocket(),Launcher.getPathFile());
 				}
 				catch(Exception e) {
 					e.printStackTrace();

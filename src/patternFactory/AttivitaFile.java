@@ -7,32 +7,40 @@ import java.util.logging.Logger;
 public class AttivitaFile implements Attivita{
 	
 	private Socket socket;
-	private String nomeFile;
-	private int dimensioneFile;
-	private FileOutputStream fos;
-	private File file;
-	
+	private String path;
 	private static Logger log=Logger.getLogger("mioLog");
 	
-	public AttivitaFile(Socket socket,String nomeFile,String path) throws FileNotFoundException {
+	public AttivitaFile(Socket socket,String path) throws FileNotFoundException {
 		this.socket=socket;
-		this.nomeFile=nomeFile;
-		file=new File(path+File.separator+nomeFile);
-		fos = new FileOutputStream(file);
+		this.path=path;
 	}
 	
 	public void eseguiAttivita() {
 		try {
+			BufferedReader bufferRead=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
-			int  bytes;
-			byte[] buffer = new byte[4*1024];
-			while ((bytes = dataInputStream.read(buffer)) != -1) {
-				fos.write(buffer,0,bytes);
+			String nomeFile;
+			//log.info(bufferRead.readLine());
+			while((nomeFile=bufferRead.readLine())!=null) {
+				File file=new File(path+File.separator+nomeFile);
+				log.info(path+File.separator+nomeFile);
+				FileOutputStream fos = new FileOutputStream(file);
+				int  bytes;
+				byte[] buffer = new byte[4*1024];
+				while ((bytes = dataInputStream.read(buffer)) != -1) {
+					fos.write(buffer,0,bytes);
 		        //size -= bytes;      // read upto file size
+				}
+				/*
+		        bytes=dataInputStream.read(buffer);
+		        if(bytes!=-1) {
+		        	 fos.write(buffer,0,bytes);
+		        }
+		        */
+				fos.close();
 			}
-		        //bytes=dataInputStream.read(buffer);
-		    dataInputStream.close();
-		    fos.close();
+			dataInputStream.close();
+			
 			/*
 			long size = dataInputStream.readLong();// read file size
 	        log.info("DIMENSIONE FILE:" +size);
