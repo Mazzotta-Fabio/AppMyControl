@@ -1,33 +1,45 @@
 package patterMVC;
 
+import java.net.Socket;
+
 public class Model implements OttieniDatiModel{
 	
-	private double x;
-	private double y;
+	private double x1;
+	private double x2;
+	private double y1;
+	private double y2;
 	private String opMDP;
 	private String azione;
 	private char carattere;
 	private String opzioneSelezione;
 	private String opSistema;
-	private String funzionalità;
+	private String funzionalita;
+	private String nomeFile;
+	private Socket socket;
+	private int dimensioneFile;
 	
-	public Model(){
-		x=0;
-		y=0;
+	public Model(Socket socket){
+		x1=0;
+		y1=0;
+		x2=0;
+		y2=0;
+		this.socket=socket;
 	}
 	
 	public void settaValori(String cmd){
 		String [] parole=cmd.split(" ");
-		funzionalità=parole[0];
-		switch(funzionalità){
+		funzionalita=parole[0];
+		switch(funzionalita){
 		case "mouse":
 			azione=parole[1];
 			opzioneSelezione=parole[2];
 			break;
 		case "mouseMuovi":
-			x=Double.parseDouble(parole[1]);
-			y=Double.parseDouble(parole[2]);
-			azione=parole[3];
+			x1=Double.parseDouble(parole[1]);
+			x2=Double.parseDouble(parole[2]);
+			y1=Double.parseDouble(parole[3]);
+			y2=Double.parseDouble(parole[4]);
+			azione=parole[5];
 			break;
 		case "tastiera":
 			carattere=parole[1].charAt(0);
@@ -39,21 +51,20 @@ public class Model implements OttieniDatiModel{
 		case "gestionePC":
 			opSistema=parole[1];
 			break;
+		case "invioFile":
+			nomeFile=parole[1];
+			dimensioneFile=Integer.parseInt(parole[2]);
 		}
 	}
-
-	public String getFunzionalità(){
-		return funzionalità;
+	
+	public int getDimensioneFile() {
+		return dimensioneFile;
 	}
 	
-	public double getX() {
-		return x;
+	public String getFunzionalita(){
+		return funzionalita;
 	}
-
-	public double getY() {
-		return y;
-	}
-
+	
 	public String getOpMDP() {
 		return opMDP;
 	}
@@ -72,5 +83,35 @@ public class Model implements OttieniDatiModel{
 	
 	public String getOpzioneSelezione(){
 		return opzioneSelezione;
+	}
+
+	@Override
+	public double getX1() {
+		return x1;
+	}
+
+	@Override
+	public double getY1() {
+		return y1;
+	}
+
+	@Override
+	public double getX2() {
+		return x2;
+	}
+
+	@Override
+	public double getY2() {
+		return y2;
+	}
+
+	@Override
+	public String getNomeFile() {
+		return nomeFile;
+	}
+
+	@Override
+	public Socket getSocket() {
+		return socket;
 	}
 }

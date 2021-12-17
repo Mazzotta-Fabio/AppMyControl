@@ -1,5 +1,9 @@
 package patternFactory;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+import patterMVC.Launcher;
 import patterMVC.OttieniDatiModel;
 
 public class GestoreFactory {
@@ -10,14 +14,14 @@ public class GestoreFactory {
 		this.model=model;
 	}
 	
-	public Attività getAttività(){
-		Attività att=null;
-		switch(model.getFunzionalità()){
+	public Attivita getAttivita(){
+		Attivita att=null;
+		switch(model.getFunzionalita()){
 			case "mouse":
 				att=new AttivitaMouse(model.getAzione(), model.getOpzioneSelezione());
 				break;
 			case "mouseMuovi":
-				att=new AttivitaMouse(model.getX(),model.getY(),model.getAzione());
+				att=new AttivitaMouse(model.getX1(),model.getX2(),model.getY1(),model.getY2(),model.getAzione());
 				break;
 			case "tastiera":
 				att=new AttivitaTastiera(model.getCarattere(),model.getOpzioneSelezione());
@@ -27,6 +31,15 @@ public class GestoreFactory {
 				break;
 			case "gestionePC":
 				att=new AttivitaSistema(model.getOpSistema());
+				break;
+			case "invioFile":
+				try {
+					att=new AttivitaFile(model.getSocket(),model.getNomeFile(),Launcher.getPathFile());
+				}
+				catch(Exception e) {
+					e.printStackTrace();
+				}
+				break;
 		}
 		return att;
 	}

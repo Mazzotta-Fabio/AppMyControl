@@ -1,15 +1,15 @@
 package patterMVC;
 
 import interfacciaGrafica.NotificaInterfaccia;
-import patternFactory.Attività;
+import patternFactory.Attivita;
 import patternFactory.GestoreFactory;
 
 public class View {
-	private GestoreFactory factoryAttività;
+	private GestoreFactory factoryAttivita;
 	private NotificaInterfaccia notifica;
 	
-	public View(GestoreFactory factoryAttività){
-		this.factoryAttività=factoryAttività;
+	public View(GestoreFactory factoryAttivita){
+		this.factoryAttivita=factoryAttivita;
 		notifica=Launcher.getFrame();
 	}
 	
@@ -18,9 +18,9 @@ public class View {
 	}
 	
 	public void aggiornaInterfaccia(){
-		Attività attività=factoryAttività.getAttività();
-		if(attività!=null){
-			attività.eseguiAttività();
+		Attivita attivita=factoryAttivita.getAttivita();
+		if(attivita!=null){
+			attivita.eseguiAttivita();
 		}
 	}
 }

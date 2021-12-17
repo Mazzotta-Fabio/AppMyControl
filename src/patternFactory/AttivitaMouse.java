@@ -2,15 +2,16 @@ package patternFactory;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.logging.Logger;
 
 
-public class AttivitaMouse implements Attivit‡ {
+public class AttivitaMouse implements Attivita {
 	
 	private Robot robot;
-	private double x;
-	private double y;
+	private int x1, y1, x2, y2, t, n;
 	private String azione;
 	private String tastoSelezionato;
+	private Logger log=Logger.getLogger("mioLog");
 	
 	public AttivitaMouse(String azione,String tastoSelezionato){
 		try{
@@ -23,18 +24,27 @@ public class AttivitaMouse implements Attivit‡ {
 		this.tastoSelezionato=tastoSelezionato;
 	}
 	
-	public AttivitaMouse(double x,double y,String azione){
+	public AttivitaMouse(double x1, double x2, double y1, double y2/*, int t, int n*/,String azione){
 		try{
 			robot=new Robot();
 		}
 		catch(AWTException e){
 			e.printStackTrace();
 		}
-		this.x=x;
-		this.y=y;
+		this.x1=(int)x1; 
+		this.x2=(int)x2; 
+		this.y1=(int)y1; 
+		this.y2=(int)y2;
+		this.t=700;
+		this.n=700;
+		/*
+		this.t=t;  
+		this.n=n;
+		*/ 
 		this.azione=azione;
 	}
-	public void eseguiAttivit‡() {
+	
+	public void eseguiAttivita() {
 		switch(azione){
 		case "Muovi":
 			muoviCursore();
@@ -90,6 +100,8 @@ public class AttivitaMouse implements Attivit‡ {
 	}
 
 	private void muoviCursore() {
+		log.info("misure: "+x1 +" "+x2+" "+y1+" "+y2);
+		/*
 		//get the current position of the mouse cursor
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 	    double width = screen.getWidth();
@@ -97,11 +109,35 @@ public class AttivitaMouse implements Attivit‡ {
 		//move the mouse relative to the current position
 		//x=x/width;
 		//y=y/height;
-		x = x*1000;
-		y = y*1000;
+		//x = x*1000;
+		//y = y*1000;
 		int newX = (int)x;
 		int newY = (int)(y);
 		robot.mouseMove(newX+30,newY);
+		*/
+		
+		//rappresenta la differenza tra gli assi x ogni volta che muovi il mouse mentre si muove
+        double dx = (x2 - x1) / ((double) n);
+        //rappresenta la differenza tra gli assi x ogni volta che muovi il mouse mentre si muove
+        double dy = (y2 - y1) / ((double) n);
+        //√® il moto rettilineo uniforme diviso in n passaggi
+        double dt = t / ((double) n);
+        /*
+         * Costruiamo un ciclo che esegue, per n volte, ogni movimento del mouse fino a giungere alla locazione finale.
+         * Per rendere lineare il movimento si crea un Thread per dt millisecondi durante ogni esecuzione.
+         * Pi√π grande √® n pi√π lineare lo vedrai
+         */
+		/*
+        for (int step = 1; step <= n; step++) {
+            try {
+				Thread.sleep((int) dt);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+            robot.mouseMove((int) (x1 + dx * step), (int) (y1 + dy * step));
+        }
+        */
+        robot.mouseMove(x2,y2);
 	}
 
 	private void premiTastoClick() {

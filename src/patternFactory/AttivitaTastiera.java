@@ -3,7 +3,7 @@ package patternFactory;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class AttivitaTastiera implements Attività{
+public class AttivitaTastiera implements Attivita{
 	
 	private Robot robot;
 	private char carattere;
@@ -19,7 +19,7 @@ public class AttivitaTastiera implements Attività{
 		this.operazione=operazione;
 	}
 	
-	public void eseguiAttività(){
+	public void eseguiAttivita(){
 		switch(operazione){
 		case "SelezioneTasto":
 			premiTasto();

@@ -3,13 +3,13 @@ package patternFactory;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 //funziona solo con media player di Windows
-public class AttivitaFunzionalita implements Attivit‡{
+public class AttivitaFunzionalita implements Attivita{
 	
-	private String modalit‡Operazione;
+	private String modalitaOperazione;
 	private Robot robot;
 	
-	public AttivitaFunzionalita(String modalit‡Operazione){
-		this.modalit‡Operazione=modalit‡Operazione;
+	public AttivitaFunzionalita(String modalitaOperazione){
+		this.modalitaOperazione=modalitaOperazione;
 		try{
 			robot=new Robot();
 		}
@@ -18,8 +18,8 @@ public class AttivitaFunzionalita implements Attivit‡{
 		}	
 	}
 	
-	public void eseguiAttivit‡(){
-		switch(modalit‡Operazione){
+	public void eseguiAttivita(){
+		switch(modalitaOperazione){
 		case "METTIMUTO":
 			mettiMuto();
 			break;

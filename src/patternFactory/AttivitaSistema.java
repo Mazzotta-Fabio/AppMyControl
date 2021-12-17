@@ -2,7 +2,7 @@ package patternFactory;
 
 import java.io.IOException;
 
-public class AttivitaSistema implements Attività {
+public class AttivitaSistema implements Attivita {
 
 	private String operazione;
 	
@@ -10,13 +10,13 @@ public class AttivitaSistema implements Attività {
 		this.operazione=operazione;
 	}
 	
-	public void eseguiAttività(){
+	public void eseguiAttivita(){
 		String comando=null;
 		//qui otteniamo informazioni sul SO
 		String operatingSystem=System.getProperty("os.name");
 		switch(operazione){
 		case "SPEGNI":
-			if((operatingSystem.equals("Linux"))||(operatingSystem.equals("Mac-OS"))){
+			if((operatingSystem.contains("ux"))||(operatingSystem.contains("Mac"))){
 				comando="shutdown -h now";
 			}
 			else{
@@ -24,7 +24,7 @@ public class AttivitaSistema implements Attività {
 			}
 			break;
 		case "RIAVVIA":
-			if((operatingSystem.equals("Linux"))||(operatingSystem.equals("Mac-OS"))){
+			if((operatingSystem.contains("ux"))||(operatingSystem.contains("Mac"))){
 				comando="shutdown -r";
 			}
 			else{
@@ -32,7 +32,7 @@ public class AttivitaSistema implements Attività {
 			}
 			break;
 		case "DISCONNETTI":
-			if((operatingSystem.equals("Linux"))||(operatingSystem.equals("Mac-OS"))){
+			if((operatingSystem.contains("ux"))||(operatingSystem.contains("Mac"))){
 				comando="shutdown -l -f";
 			}
 			else{
@@ -40,7 +40,7 @@ public class AttivitaSistema implements Attività {
 			}
 			break;
 		case "IBERNA":
-			if((operatingSystem.equals("Linux"))||(operatingSystem.equals("Mac-OS"))){
+			if((operatingSystem.contains("ux"))||(operatingSystem.contains("Mac"))){
 				comando="sudo pm-hibernate";
 			}
 			else{
