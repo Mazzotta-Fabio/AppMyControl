@@ -20,7 +20,8 @@ public class AttivitaFile implements Attivita{
 	public void eseguiAttivita() {
 		log.info("Sto gestendo il file");
 		try {
-			File file=new File(Launcher.getPathFile()+"\\"+nomeFile);
+			String nomeFileDecodificato=new String(Base64.getDecoder().decode(nomeFile));
+			File file=new File(Launcher.getPathFile()+"\\"+nomeFileDecodificato);
 			log.info("Salvo il file "+file.getName());
 			FileOutputStream fos = new FileOutputStream(file);
 			OutputStream outputStream=new BufferedOutputStream((fos));
