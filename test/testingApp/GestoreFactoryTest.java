@@ -5,7 +5,7 @@ import patternFactory.AttivitaFunzionalita;
 import patternFactory.AttivitaMouse;
 import patternFactory.AttivitaSistema;
 import patternFactory.AttivitaTastiera;
-import patternFactory.Attività;
+import patternFactory.Attivita;
 import patternFactory.GestoreFactory;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -26,25 +26,25 @@ public class GestoreFactoryTest extends TestCase {
 		model=null;
 	}
 	
-	public void testGetAttività(){
-		Attività att;
+	public void testGetAttivita(){
+		Attivita att;
 		model.settaValori("mouse Click SINSITRO");
-		att=factory.getAttività();
+		att=factory.getAttivita();
 		AttivitaMouse mouse=new AttivitaMouse("Click","SINISTRO");
 		assertEquals(mouse.getClass(),att.getClass());
 		
 		model.settaValori("tastiera A Telecomando");
-		att=factory.getAttività();
+		att=factory.getAttivita();
 		AttivitaTastiera tastiera=new AttivitaTastiera('A',"Telecomando");
 		assertEquals(tastiera.getClass(),att.getClass());
 		
 		model.settaValori("gestioneMDP PAUSAESEGUI");
-		att=factory.getAttività();
+		att=factory.getAttivita();
 		AttivitaFunzionalita mdp=new AttivitaFunzionalita("PAUSAESEGUI");
 		assertEquals(mdp.getClass(),att.getClass());
 		
 		model.settaValori("gestionePC SPEGNI");
-		att=factory.getAttività();
+		att=factory.getAttivita();
 		AttivitaSistema sistema=new AttivitaSistema("SPEGNI");
 		assertEquals(sistema.getClass(),att.getClass());
 	}

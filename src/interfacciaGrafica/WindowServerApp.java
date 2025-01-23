@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
-import java.util.Set;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,12 +14,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.attribute.FileAttribute;
-import java.nio.file.attribute.PosixFilePermission;
-import java.nio.file.attribute.PosixFilePermissions;
 
 import patterMVC.Launcher;
 
@@ -82,7 +74,7 @@ public class WindowServerApp extends JFrame implements NotificaInterfaccia,Actio
 	private JPanel creaPanel2(){
 		JPanel panel=new JPanel();
 		Font f=new Font("Calibri",Font.BOLD,20);
-		lblIndirizzo=new JLabel("Inserisci l'indirizzo IP [" + Launcher.getLocalName() + "] in \"Impostazioni\" per connetterti al PC.");
+		lblIndirizzo=new JLabel("Inserisci l'indirizzo IP " + Launcher.getLocalName() + " in \"Impostazioni\" per connetterti al PC.");
 		lblIndirizzo.setFont(f);
 		lblIndirizzo.setForeground(Color.RED);
 		panel.add(lblIndirizzo);
@@ -163,15 +155,22 @@ public class WindowServerApp extends JFrame implements NotificaInterfaccia,Actio
 			if(!(txtFile.getText().equals(""))) {
 				File f;
 				if(System.getProperty("os.name").contains("Mac")) {
-					f=new File("src/path.txt");
+					f=new File("/Users/path.txt");
 				}
 				else {
-					f=new File("C:'\'path.txt");
+					f=new File("C:\\Users\\Public\\path.txt");
 				}
 				PrintWriter out=new PrintWriter(new FileWriter(f));
 				out.write("");
-				out.write(txtFile.getText());
-				txtFile.setText("");
+				File f1=new File(txtFile.getText());
+				if(f1.isDirectory()) {
+					out.write(txtFile.getText());
+					txtFile.setText("");
+					JOptionPane.showMessageDialog(this, "Il percorso è stato salvato correttamente!",null,JOptionPane.INFORMATION_MESSAGE);
+				}
+				else {
+					JOptionPane.showMessageDialog(this, "Il percorso inserito non e' corretto!\nSi prega di correggere il percorso.","Errore",JOptionPane.ERROR_MESSAGE);
+				}
 				out.close();
 			}
 			else {

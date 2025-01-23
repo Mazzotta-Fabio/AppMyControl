@@ -22,7 +22,7 @@ public class Controller implements Runnable{
 		bufferWrite=new BufferedWriter(new OutputStreamWriter(this.socket.getOutputStream()));
 		bufferRead=new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 		print=new PrintWriter(bufferWrite,true);
-		model =new Model(socket);
+		model =new Model();
 		factory=new GestoreFactory(model);
 		view=new View(factory);
 	}

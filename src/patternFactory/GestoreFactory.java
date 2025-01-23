@@ -1,9 +1,5 @@
 package patternFactory;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-
-import patterMVC.Launcher;
 import patterMVC.OttieniDatiModel;
 
 public class GestoreFactory {
@@ -33,12 +29,7 @@ public class GestoreFactory {
 				att=new AttivitaSistema(model.getOpSistema());
 				break;
 			case "invioFile":
-				try {
-					att=new AttivitaFile(model.getSocket(),Launcher.getPathFile());
-				}
-				catch(Exception e) {
-					e.printStackTrace();
-				}
+				att=new AttivitaFile(model.getNomeFile(),model.getCodificaFile());
 				break;
 		}
 		return att;

@@ -1,7 +1,5 @@
 package patterMVC;
 
-import java.net.Socket;
-
 public class Model implements OttieniDatiModel{
 	
 	private double x1;
@@ -15,15 +13,13 @@ public class Model implements OttieniDatiModel{
 	private String opSistema;
 	private String funzionalita;
 	private String nomeFile;
-	private Socket socket;
-	private int dimensioneFile;
+	private String codificaFile64;
 	
-	public Model(Socket socket){
+	public Model(){
 		x1=0;
 		y1=0;
 		x2=0;
 		y2=0;
-		this.socket=socket;
 	}
 	
 	public void settaValori(String cmd){
@@ -52,13 +48,13 @@ public class Model implements OttieniDatiModel{
 			opSistema=parole[1];
 			break;
 		case "invioFile":
-			//nomeFile=parole[1];
-			//dimensioneFile=Integer.parseInt(parole[2]);
+			nomeFile=parole[1];
+			codificaFile64=parole[2];
 		}
 	}
 	
-	public int getDimensioneFile() {
-		return dimensioneFile;
+	public String getCodificaFile() {
+		return codificaFile64;
 	}
 	
 	public String getFunzionalita(){
@@ -108,10 +104,5 @@ public class Model implements OttieniDatiModel{
 	@Override
 	public String getNomeFile() {
 		return nomeFile;
-	}
-
-	@Override
-	public Socket getSocket() {
-		return socket;
 	}
 }

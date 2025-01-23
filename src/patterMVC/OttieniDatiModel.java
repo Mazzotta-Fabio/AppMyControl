@@ -1,6 +1,5 @@
 package patterMVC;
 
-import java.net.Socket;
 
 public interface OttieniDatiModel {
 	public String getFunzionalita();
@@ -14,6 +13,5 @@ public interface OttieniDatiModel {
 	public char getCarattere();
 	public String getOpzioneSelezione();
 	public String getNomeFile();
-	public Socket getSocket();
-	public int getDimensioneFile();
+	public String getCodificaFile();
 }

@@ -39,12 +39,17 @@ public class Launcher {
 		try{
 			InetAddress host = InetAddress.getLocalHost();
 			InetAddress [] address = InetAddress.getAllByName(host.getHostName());
+			/*
 			for(int i=0;i<address.length;i++) {
+				log.info(address[i].toString());
+				/*
 				if((!(address[i].toString().contains("127.0.0.1")))&&(!(address[i].toString().contains(":")))) {
 					return (address[i].toString().split("/").length==2 ? address[i].toString().split("/")[1] : address[0].toString()) ;
 				}
 			}
+			*/
 			
+			return address[2].toString().split("/")[1];
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -55,12 +60,14 @@ public class Launcher {
 	public static String getPathFile() throws IOException {
 		BufferedReader bf;
 		if(System.getProperty("os.name").contains("Mac")) {
-			bf=new BufferedReader(new FileReader(new File("src/path.txt")));
+			bf=new BufferedReader(new FileReader(new File("\\Users\\path.txt")));
 		}
 		else {
-			bf=new BufferedReader(new FileReader(new File("C:'\'path.txt")));
+			bf=new BufferedReader(new FileReader(new File("C:\\Users\\Public\\path.txt")));
 		}
-		String path=bf.readLine();
+		
+		return bf.readLine();
+		/*
 		String [] elements=path.split("/");
 		path="";
 		for(int i=0;i<elements.length;i++) {
@@ -69,6 +76,7 @@ public class Launcher {
 		bf.close();
 		log.info(path);
 		return path;
+		*/
 	}
 	
 	public static WindowServerApp getFrame(){

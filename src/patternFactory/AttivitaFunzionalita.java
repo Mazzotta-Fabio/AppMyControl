@@ -51,59 +51,60 @@ public class AttivitaFunzionalita implements Attivita{
 	}
 	
 	private void mettiMuto(){
-		robot.keyPress(KeyEvent.VK_F7);
-		robot.keyRelease(KeyEvent.VK_F7);
+		robot.keyPress(KeyEvent.VK_M);
+		robot.keyRelease(KeyEvent.VK_M);
 	}
 	
 	private void chiudiMDP() {
-		robot.keyPress(KeyEvent.VK_ALT);
-		robot.keyPress(KeyEvent.VK_F4);
-		robot.keyRelease(KeyEvent.VK_F4);
-		robot.keyRelease(KeyEvent.VK_ALT);
-	}
-
-	private void mettiStop() {
 		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_W);
+	}
+	
+	//SALTA INTRO
+	private void mettiStop() {
+		//robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_S);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
+		//robot.keyRelease(KeyEvent.VK_CONTROL);
 	}
 
 	private void mettiSchermoIntero() {
-		robot.keyPress(KeyEvent.VK_ALT);
-		robot.keyPress(KeyEvent.VK_ENTER);
-		robot.keyRelease(KeyEvent.VK_ENTER);
-		robot.keyRelease(KeyEvent.VK_ALT);
+		robot.keyPress(KeyEvent.VK_F);
+		//robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_F);
+		//robot.keyRelease(KeyEvent.VK_ALT);
 	}
 
 	private void mettiPausa() {
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_P);
-		robot.keyRelease(KeyEvent.VK_P);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_SPACE);
+		//robot.keyPress(KeyEvent.VK_P);
+		//robot.keyRelease(KeyEvent.VK_P);
+		robot.keyRelease(KeyEvent.VK_SPACE);
 	}
 
 	private void mettiIndietro() {
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_B);
-		robot.keyRelease(KeyEvent.VK_B);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_LEFT);
+		//robot.keyPress(KeyEvent.VK_B);
+		//robot.keyRelease(KeyEvent.VK_B);
+		robot.keyRelease(KeyEvent.VK_LEFT);
 	}
 	
 	private void mettiAvanti() {
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_F);
-		robot.keyRelease(KeyEvent.VK_F);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_RIGHT);
+		//robot.keyPress(KeyEvent.VK_F);
+		//robot.keyRelease(KeyEvent.VK_F);
+		robot.keyRelease(KeyEvent.VK_RIGHT);
 	}
 
 	private void mettiVolumeBasso() {
-		robot.keyPress(KeyEvent.VK_F8);
-		robot.keyRelease(KeyEvent.VK_F8);
+		robot.keyPress(KeyEvent.VK_DOWN);
+		robot.keyRelease(KeyEvent.VK_DOWN);
 	}
 
 	private void mettiVolumeAlto() {
-		robot.keyPress(KeyEvent.VK_F9);
-		robot.keyRelease(KeyEvent.VK_F9);
+		robot.keyPress(KeyEvent.VK_UP);
+		robot.keyRelease(KeyEvent.VK_UP);
 	}
 }

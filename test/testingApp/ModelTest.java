@@ -5,7 +5,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-//questa classe è un test unit utilizzato per testare tutti i metodi della classe Model
+//questa classe ï¿½ un test unit utilizzato per testare tutti i metodi della classe Model
 public class ModelTest extends TestCase {
 	
 	private Model model;
@@ -21,20 +21,20 @@ public class ModelTest extends TestCase {
 	//verificare se ha settato i valori
 	public void testSettaValori(){
 		model.settaValori("mouse 5 5 Click SINISTRO");
-		assertEquals("mouse", model.getFunzionalità());
-		assertEquals(5, model.getX());
-		assertEquals(5, model.getY());
+		assertEquals("mouse", model.getFunzionalita());
+		assertEquals(5, model.getX1());
+		assertEquals(5, model.getY1());
 		assertEquals("Click", model.getAzione());
 		assertEquals("SINISTRO", model.getOpzioneSelezione());
 		model.settaValori("tastiera A Telecomando");
-		assertEquals("tastiera", model.getFunzionalità());
+		assertEquals("tastiera", model.getFunzionalita());
 		assertEquals('A', model.getCarattere());
 		assertEquals("Telecomando", model.getOpzioneSelezione());
 		model.settaValori("gestionePC SPEGNI");
-		assertEquals("gestionePC", model.getFunzionalità());
+		assertEquals("gestionePC", model.getFunzionalita());
 		assertEquals("SPEGNI",model.getOpSistema());
 		model.settaValori("gestioneMDP PAUSAESEGUI");
-		assertEquals("gestioneMDP", model.getFunzionalità());
+		assertEquals("gestioneMDP", model.getFunzionalita());
 		assertEquals("PAUSAESEGUI", model.getOpMDP());
 	}
 	
