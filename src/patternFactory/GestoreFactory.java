@@ -17,7 +17,7 @@ public class GestoreFactory {
 				att=new AttivitaMouse(model.getAzione(), model.getOpzioneSelezione());
 				break;
 			case "mouseMuovi":
-				att=new AttivitaMouse(model.getX1(),model.getX2(),model.getY1(),model.getY2(),model.getAzione());
+				att=new AttivitaMouse(model.getX(),model.getY(),model.getAzione());
 				break;
 			case "tastiera":
 				att=new AttivitaTastiera(model.getCarattere(),model.getOpzioneSelezione());

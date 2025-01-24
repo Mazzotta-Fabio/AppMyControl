@@ -3,10 +3,8 @@ package patterMVC;
 
 public interface OttieniDatiModel {
 	public String getFunzionalita();
-	public double getX1();
-	public double getY1();
-	public double getX2();
-	public double getY2();
+	public float getY();
+	public float getX();
 	public String getOpMDP();
 	public String getAzione();
 	public String getOpSistema();

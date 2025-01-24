@@ -22,8 +22,8 @@ public class ModelTest extends TestCase {
 	public void testSettaValori(){
 		model.settaValori("mouse 5 5 Click SINISTRO");
 		assertEquals("mouse", model.getFunzionalita());
-		assertEquals(5, model.getX1());
-		assertEquals(5, model.getY1());
+		assertEquals(5, model.getX());
+		assertEquals(5, model.getY());
 		assertEquals("Click", model.getAzione());
 		assertEquals("SINISTRO", model.getOpzioneSelezione());
 		model.settaValori("tastiera A Telecomando");

@@ -8,7 +8,8 @@ import java.util.logging.Logger;
 public class AttivitaMouse implements Attivita {
 	
 	private Robot robot;
-	private int x1, y1, x2, y2, t, n;
+	private float x;
+	private float y;
 	private String azione;
 	private String tastoSelezionato;
 	private Logger log=Logger.getLogger("mioLog");
@@ -24,24 +25,16 @@ public class AttivitaMouse implements Attivita {
 		this.tastoSelezionato=tastoSelezionato;
 	}
 	
-	public AttivitaMouse(double x1, double x2, double y1, double y2/*, int t, int n*/,String azione){
+	public AttivitaMouse(float x, float y, String azione){
 		try{
 			robot=new Robot();
 		}
 		catch(AWTException e){
 			e.printStackTrace();
 		}
-		this.x1=(int)x1; 
-		this.x2=(int)x2; 
-		this.y1=(int)y1; 
-		this.y2=(int)y2;
-		this.t=700;
-		this.n=700;
-		/*
-		this.t=t;  
-		this.n=n;
-		*/ 
 		this.azione=azione;
+		this.x=x;
+		this.y=y;
 	}
 	
 	public void eseguiAttivita() {
@@ -100,43 +93,16 @@ public class AttivitaMouse implements Attivita {
 	}
 
 	private void muoviCursore() {
-		log.info("misure: "+x1 +" "+x2+" "+y1+" "+y2);
-		/*
-		//get the current position of the mouse cursor
-		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-	    double width = screen.getWidth();
-		double height = screen.getHeight();
-		//move the mouse relative to the current position
-		//x=x/width;
-		//y=y/height;
-		//x = x*1000;
-		//y = y*1000;
-		int newX = (int)x;
-		int newY = (int)(y);
-		robot.mouseMove(newX+30,newY);
-		*/
+		log.info("misure: "+x +" "+y);
+		Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
 		
-		//rappresenta la differenza tra gli assi x ogni volta che muovi il mouse mentre si muove
-        double dx = (x2 - x1) / ((double) n);
-        //rappresenta la differenza tra gli assi x ogni volta che muovi il mouse mentre si muove
-        double dy = (y2 - y1) / ((double) n);
-        //è il moto rettilineo uniforme diviso in n passaggi
-        double dt = t / ((double) n);
-        /*
-         * Costruiamo un ciclo che esegue, per n volte, ogni movimento del mouse fino a giungere alla locazione finale.
-         * Per rendere lineare il movimento si crea un Thread per dt millisecondi durante ogni esecuzione.
-         * Più grande è n più lineare lo vedrai
-         */
-		/*
-        for (int step = 1; step <= n; step++) {
-            try {
-				Thread.sleep((int) dt);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-            robot.mouseMove((int) (x1 + dx * step), (int) (y1 + dy * step));
-        }
-        */
+		int screenWidth=screenSize.width;
+		int screenHeight=screenSize.height;
+		
+		int x2=(int)(x*screenWidth)+40;
+		int y2=(int)(y*screenHeight)+40;
+        
+		log.info("coordinate del mouse: "+x2+" "+y2);
         robot.mouseMove(x2,y2);
 	}
 

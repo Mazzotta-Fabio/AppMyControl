@@ -2,10 +2,9 @@ package patterMVC;
 
 public class Model implements OttieniDatiModel{
 	
-	private double x1;
-	private double x2;
-	private double y1;
-	private double y2;
+
+	private float x;
+	private float y;
 	private String opMDP;
 	private String azione;
 	private char carattere;
@@ -16,10 +15,7 @@ public class Model implements OttieniDatiModel{
 	private String codificaFile64;
 	
 	public Model(){
-		x1=0;
-		y1=0;
-		x2=0;
-		y2=0;
+		
 	}
 	
 	public void settaValori(String cmd){
@@ -31,11 +27,9 @@ public class Model implements OttieniDatiModel{
 			opzioneSelezione=parole[2];
 			break;
 		case "mouseMuovi":
-			x1=Double.parseDouble(parole[1]);
-			x2=Double.parseDouble(parole[2]);
-			y1=Double.parseDouble(parole[3]);
-			y2=Double.parseDouble(parole[4]);
-			azione=parole[5];
+			x=Float.parseFloat(parole[1]);
+			y=Float.parseFloat(parole[2]);
+			azione=parole[3];
 			break;
 		case "tastiera":
 			carattere=parole[1].charAt(0);
@@ -82,24 +76,16 @@ public class Model implements OttieniDatiModel{
 	}
 
 	@Override
-	public double getX1() {
-		return x1;
+	public float getX() {
+		return x;
 	}
 
 	@Override
-	public double getY1() {
-		return y1;
+	public float getY() {
+		return y;
 	}
 
-	@Override
-	public double getX2() {
-		return x2;
-	}
 
-	@Override
-	public double getY2() {
-		return y2;
-	}
 
 	@Override
 	public String getNomeFile() {
